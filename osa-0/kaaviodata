@@ -20,7 +20,7 @@ end note
 #0.5
 kayttaja->selain:
 note left of selain
-kayttaja kirjoittaa uuden muistiinpanon ja
+kayttaja kirjoittaa osoiteriville
 fullstack-exampleapp.herokuapp.com/spa
 end note
 selain->palvelin: GET fullstack-exampleapp.herokuapp.com/spa
