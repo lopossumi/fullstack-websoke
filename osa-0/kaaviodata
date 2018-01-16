@@ -1,0 +1,18 @@
+#0.4
+
+kayttaja->selain:
+note left of selain
+kayttaja kirjoittaa uuden muistiinpanon ja
+klikkaa painiketta "tallenna"
+end note
+selain->palvelin: POST fullstack-exampleapp.herokuapp.com/new_note
+note left of palvelin
+  tallennetaan viestin sisältö aikaleiman kanssa muistiin
+end note
+palvelin->selain: status 302, redirect sivulle /notes
+
+note left of selain
+  selain tekee uudet pyynnöt palvelimelle
+  edellisen tehtävän tapaan ja saa nyt data.json
+  -tiedostossa myös uuden muistiinpanon.
+end note
