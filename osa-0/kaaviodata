@@ -48,3 +48,21 @@ note left of selain
   selain näyttää muistiinpanot samaan 
   tapaan kuin tehtävässä 0.3.
 end note
+
+#0.6
+kayttaja->selain:
+note left of selain
+kayttaja kirjoittaa uuden muistiinpanon
+ja klikkaa painiketta tallenna
+end note
+note left of palvelin
+  pyynnön mukana lähetetään uusi muistiinpano JSON-muodossa
+  (sisältö ja aikaleima)
+end note
+selain->palvelin: POST fullstack-exampleapp.herokuapp.com/new_note_spa
+note left of selain
+  selain lisää uuden muistiinpanon edellisten
+  jatkoksi jäämättä odottelemaan vastausta
+  palvelimelta.
+end note
+palvelin->selain: status 201, created
