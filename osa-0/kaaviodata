@@ -16,3 +16,35 @@ note left of selain
   edellisen tehtävän tapaan ja saa nyt data.json
   -tiedostossa myös uuden muistiinpanon.
 end note
+
+#0.5
+kayttaja->selain:
+note left of selain
+kayttaja kirjoittaa uuden muistiinpanon ja
+fullstack-exampleapp.herokuapp.com/spa
+end note
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/spa
+note left of palvelin
+  haetaan HTML-pohja single page applicationille
+end note
+palvelin->selain: status 200, spa (sivun html-koodi)
+selain->palvelin: GET main.css
+note left of palvelin
+haetaan sivun tyylitiedosto
+end note
+palvelin->selain: status 200, main.css
+selain->palvelin: GET spa.js
+note left of palvelin
+haetaan clientilla ajettava js-koodi
+end note
+palvelin->selain: status 200, spa.js
+selain->palvelin: GET data.json
+note left of palvelin
+muistiinpanot JSON-muodossa
+end note
+palvelin->selain: status 200, data.json
+
+note left of selain
+  selain näyttää muistiinpanot samaan 
+  tapaan kuin tehtävässä 0.3.
+end note
