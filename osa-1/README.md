@@ -2,24 +2,17 @@
 
 ## Reactin alkeet
 
-### 1.1 Jako komponenteiksi
-Otsikko, sisältö ja yhteensä: [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/2dd916e24062de9d3fd00fb4324ba82aad4fa941#diff-0da21ce95c5b531e15a3038a71b5d0f6)
-
-### 1.2 Lisää komponentteja
-Osa omana komponenttinaan: [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/bb90a65ec60c1a2335026817d8fbe88a08a17702#diff-0da21ce95c5b531e15a3038a71b5d0f6)
-
-### 1.3 Tieto olioissa
-Kurssin tiedot olioina: [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/3d46d9f9967d817ca1e9edef9bfb3f582705a5b4#diff-0da21ce95c5b531e15a3038a71b5d0f6)
-
-### 1.4 Oliot taulukkoon
-Oliot taulukossa + looppaus: [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/f75d2fe2a5a117d1c4fb404e584c98246c3d7a1c)
-
-### 1.5 Yksi olio
-Kurssi yhtenä oliona: [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/c193b5332dc9ce86def7f83f2043b5e4ab280ce5#diff-e39702c19cac5064736a4315630e6a22)
-
-## Lisää reactia
-
-### 1.6 Unicafe osa 1
+| Tehtävä | Kuvaus | Commit |
+---------
+| Tehtävä 1 | Jako komponenteiksi | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/2dd916e24062de9d3fd00fb4324ba82aad4fa941) |
+| Tehtävä 2 | Lisää komponentteja | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/bb90a65ec60c1a2335026817d8fbe88a08a17702) |
+| Tehtävä 3 | Tieto olioissa | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/3d46d9f9967d817ca1e9edef9bfb3f582705a5b4) |
+| Tehtävä 4 | Oliot taulukkoon | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/f75d2fe2a5a117d1c4fb404e584c98246c3d7a1c) |
+| Tehtävä 5 | Yksi olio | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/c193b5332dc9ce86def7f83f2043b5e4ab280ce5) |
+-----------
+| Lisää reactia |
+-------------
+| Tehtävä 6 | Unicafe, osa 1 | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/0affe16b1dac416cd739c62d499cf46f2857e252) |
 
 ### 1.7 Unicafe osa 2
 
