@@ -1,6 +1,33 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+const Otsikko = (props) => {
+    return(
+        <div>
+        <h1>{props.kurssi}</h1>
+        </div>
+    )
+}
+
+const Sisalto = (props) => {
+    return(
+        <div>
+        <p>{props.osat[0]} {props.tehtavat[0]}</p>
+        <p>{props.osat[1]} {props.tehtavat[1]}</p>
+        <p>{props.osat[2]} {props.tehtavat[2]}</p>
+        </div>
+    )
+}
+
+const Yhteensa = (props) => {
+    const summa = props.tehtavat.reduce((a,b)=>(a+b))
+    return(
+        <div>
+        <p>Yhteensä: {summa} tehtävää</p>
+        </div>
+    )
+}
+
 const App = () => {
   const kurssi = 'Half Stack -sovelluskehitys'
   const osa1 = 'Reactin perusteet'
@@ -10,14 +37,14 @@ const App = () => {
   const osa3 = 'Komponenttien tila'
   const tehtavia3 = 14
 
+  const osat = [osa1,osa2,osa3]
+  const tehtavat = [tehtavia1,tehtavia2,tehtavia3]
   return (
-    <div>
-      <h1>{kurssi}</h1>
-      <p>{osa1} {tehtavia1}</p>
-      <p>{osa2} {tehtavia2}</p>
-      <p>{osa3} {tehtavia3}</p>
-      <p>yhteensä {tehtavia1 + tehtavia2 + tehtavia3} tehtävää</p>
-    </div>
+        <div>
+          <Otsikko kurssi={kurssi} />
+          <Sisalto osat={osat} tehtavat = {tehtavat}/>
+          <Yhteensa tehtavat={tehtavat}/>
+        </div>
   )
 }
 
