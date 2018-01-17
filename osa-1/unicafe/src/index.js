@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const counter ={
+const counter = {
     hyva: 0,
     neutraali : 0,
     huono: 0
@@ -10,9 +10,19 @@ const counter ={
 
 const Button = (props) => {
     return (
-        <button className={"button btn-"+props.color} onClick={()=>console.log('clicked' + props.counterName)}>{props.name}</button>
+        <button 
+            className={"button btn-"+props.color} 
+            onClick = {() => increase(props.counterName)}>
+            {props.name}
+        </button>
     )
 }
+
+const increase = (props) => {
+    counter[props]++
+    renderoi()
+}
+
 
 const App = (props) => {
     const {counter} = props
@@ -34,8 +44,11 @@ const App = (props) => {
   )
 }
 
+const renderoi = () => {
 ReactDOM.render(
   <App counter = {counter}/>,
   document.getElementById('root')
 )
+}
 
+renderoi()
