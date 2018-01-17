@@ -15,6 +15,7 @@ Kurssin tiedot olioina: [Linkki commitiin](https://github.com/lopossumi/fullstac
 Oliot taulukossa + looppaus: [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/f75d2fe2a5a117d1c4fb404e584c98246c3d7a1c)
 
 ### 1.5 Yksi olio
+Kurssi yhtenä oliona: [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/c193b5332dc9ce86def7f83f2043b5e4ab280ce5#diff-e39702c19cac5064736a4315630e6a22)
 
 ## Lisää reactia
 
