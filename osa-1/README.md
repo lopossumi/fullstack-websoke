@@ -5,7 +5,7 @@
 ### 1.1 Jako komponenteiksi
 Otsikko, sisältö ja yhteensä: [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/2dd916e24062de9d3fd00fb4324ba82aad4fa941#diff-0da21ce95c5b531e15a3038a71b5d0f6)
 ### 1.2 Lisää komponentteja
-
+Osa omana komponenttinaan: [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/bb90a65ec60c1a2335026817d8fbe88a08a17702#diff-0da21ce95c5b531e15a3038a71b5d0f6)
 ### 1.3 Tieto olioissa
 
 ### 1.4 Oliot taulukkoon
