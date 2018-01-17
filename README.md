@@ -4,9 +4,10 @@ Repositorio sisältää vastauksia kevään 2018 kurssille [Fullstack-websovellu
 
 ## Sisältö
 
-- [Osa 0](https://github.com/lopossumi/fullstack-websoke/tree/master/osa-0): Sekvenssikaavioita (perinteinen ja SPA)
+- [Osa 0: Sekvenssikaavioita (perinteinen ja SPA)](https://github.com/lopossumi/fullstack-websoke/tree/master/osa-0)
 
 ## Linkit
 
 Hyödylliseksi havaittuja linkkejä:
 - [React JavaScript Tutorial in VS Code](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial)
+- [Web Sequence Diagrams](https://www.websequencediagrams.com/)
