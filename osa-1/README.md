@@ -12,7 +12,7 @@ Osa omana komponenttinaan: [Linkki commitiin](https://github.com/lopossumi/fulls
 Kurssin tiedot olioina: [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/3d46d9f9967d817ca1e9edef9bfb3f582705a5b4#diff-0da21ce95c5b531e15a3038a71b5d0f6)
 
 ### 1.4 Oliot taulukkoon
-Oliot taulukossa + looppaus
+Oliot taulukossa + looppaus: [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/f75d2fe2a5a117d1c4fb404e584c98246c3d7a1c)
 
 ### 1.5 Yksi olio
 
