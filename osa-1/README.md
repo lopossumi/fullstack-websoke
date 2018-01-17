@@ -3,7 +3,7 @@
 ## Reactin alkeet
 
 ### 1.1 Jako komponenteiksi
-[Linkki commitiin (rikki)]()
+Otsikko, sisältö ja yhteensä: [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/2dd916e24062de9d3fd00fb4324ba82aad4fa941#diff-0da21ce95c5b531e15a3038a71b5d0f6)
 ### 1.2 Lisää komponentteja
 
 ### 1.3 Tieto olioissa
