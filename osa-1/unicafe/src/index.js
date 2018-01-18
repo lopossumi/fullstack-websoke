@@ -26,6 +26,10 @@ const increase = (props) => {
 
 const App = (props) => {
     const {counter} = props
+    const yhteensa = counter.hyva + counter.neutraali + counter.huono
+    const keskiarvo = yhteensa === 0 ? 0 : (counter.hyva - counter.huono)/yhteensa
+    const positiivisia = yhteensa === 0 ? 0 : (counter.hyva/yhteensa) * 100
+
     return (
         <div>
           <h1>Anna palautetta</h1>
@@ -37,7 +41,9 @@ const App = (props) => {
           <p>
           Hyvä: {counter.hyva}<br />
           Neutraali: {counter.neutraali}<br />
-          Huono: {counter.huono} 
+          Huono: {counter.huono}<br />
+          Keskiarvo: {keskiarvo.toFixed(1)}<br />
+          Positiivisia: {positiivisia.toFixed(0)} %
           </p>
 
         </div>
