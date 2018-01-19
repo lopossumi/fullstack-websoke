@@ -15,9 +15,11 @@
 | Tehtävänumero | Kuvaus | Commit |
 |-------- |--------|--------|
 | Tehtävä 6 | Unicafe, osa 1 | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/0affe16b1dac416cd739c62d499cf46f2857e252) |
-| Tehtävä 7 | Unicafe, osa 2 | |
-| Tehtävä 8 | Unicafe, osa 3 | |
-| Tehtävä 9* | Unicafe, osa 4 | |
-| Tehtävä 10* | Unicafe, osa 5 | |
-| Tehtävä 11 | Unicafe, osa 6 | |
-| Tehtävä 12 | Anekdootit | |
+| Tehtävä 7 | Unicafe, osa 2 | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/eefb5fb97ee02ae2bbecc7d3dfa089d38b383d69) |
+| Tehtävä 8 | Unicafe, osa 3 | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/1f96a5880730d433dac0ba505adf121edc9e1d73) |
+| Tehtävä 9* | Unicafe, osa 4 | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/fa2a20f7074082422e2a0a325ced8480be6f9fa0)|
+| Tehtävä 10* | Unicafe, osa 5 | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/d3c6a2c3fcffb99a312d7851ace272259f6279d8) |
+| Tehtävä 11 | Unicafe, osa 6 | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/d3c6a2c3fcffb99a312d7851ace272259f6279d8) |
+| Tehtävä 12* | Anekdootit, osa 1 | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/1ce6541edcaeacb18bdebdfda5d8719f2574835a) |
+| Tehtävä 13* | Anekdootit, osa 2 | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/460738464478006ef8db68c0540c524f42e799fd) |
+| Tehtävä 14* | Anekdootit, osa 3 | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/83054d8b9b251339fc949de0db14fdef2af0acb1) |
