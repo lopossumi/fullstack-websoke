@@ -23,12 +23,34 @@ const increase = (props) => {
     renderoi()
 }
 
+const Statistics = (props) => {
+    const {counter} = props
+    const yhteensa = counter.hyva + counter.neutraali + counter.huono
+    const keskiarvo = yhteensa === 0 ? 0 : ((counter.hyva - counter.huono)/yhteensa).toFixed(1)
+    const positiivisia = yhteensa === 0 ? 0 : ((counter.hyva/yhteensa) * 100).toFixed(0)+" %"
+
+    return(
+        <div id="statistiikka">
+        <h2>Statistiikka</h2>
+        
+        <Statistic name = "Hyvä" value = {counter.hyva} />
+        <Statistic name = "Neutraali" value = {counter.neutraali} />
+        <Statistic name = "Huono" value = {counter.huono} />
+        <Statistic name = "Keskiarvo" value = {keskiarvo} />
+        <Statistic name = "Positiivisia" value = {positiivisia} />
+        </div>
+    )
+}
+
+const Statistic = (props) => {
+    return(
+        <div>{props.name}: {props.value}</div>
+    )
+}
+
 
 const App = (props) => {
     const {counter} = props
-    const yhteensa = counter.hyva + counter.neutraali + counter.huono
-    const keskiarvo = yhteensa === 0 ? 0 : (counter.hyva - counter.huono)/yhteensa
-    const positiivisia = yhteensa === 0 ? 0 : (counter.hyva/yhteensa) * 100
 
     return (
         <div>
@@ -37,14 +59,7 @@ const App = (props) => {
           <Button name="Neutraali" counterName="neutraali" color="yellow"/>
           <Button name="Huono" counterName="huono" color="red"/>
           
-          <h2>Statistiikka</h2>
-          <p>
-          Hyvä: {counter.hyva}<br />
-          Neutraali: {counter.neutraali}<br />
-          Huono: {counter.huono}<br />
-          Keskiarvo: {keskiarvo.toFixed(1)}<br />
-          Positiivisia: {positiivisia.toFixed(0)} %
-          </p>
+          <Statistics counter = {counter}/>
 
         </div>
   )
