@@ -7,28 +7,44 @@ class App extends React.Component {
         super(props)
         this.state = {
             selected: 0,
-            votes: new Array(anecdotes.length).fill(0)
+            votes: new Array(anecdotes.length).fill(0),
+            mostVotes: 0,
+            bestQuote: 0
         }
     }
 
     randomQuote = () => {
+        // Arvotaan uusi anekdootti (ei sallita samaa lainausta)
+        let newSelected = 0
+        do {
+            newSelected = Math.floor(Math.random() * anecdotes.length)
+        } while (newSelected === this.state.selected)
+
         this.setState({
-            selected: Math.floor(Math.random() * anecdotes.length)
+            selected: newSelected
         })
     }
 
     vote = () => {
         const newVotes = this.state.votes
         newVotes[this.state.selected]++
+
         this.setState({
             votes: newVotes
         })
+
+        if (this.state.votes[this.state.selected] > this.state.mostVotes) {
+            this.setState({
+                mostVotes: this.state.votes[this.state.selected],
+                bestQuote: this.state.selected
+            })
+        }
     }
 
     render() {
         return (
             <div>
-                <button onClick={this.randomQuote}>Next anecdote</button>
+                <button onClick={this.randomQuote}>Next random anecdote</button>
                 <table>
                     <tbody>
                         <tr><td><div className="votes">{this.state.votes[this.state.selected]}<br />
@@ -39,6 +55,25 @@ class App extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+                <BestQuote
+                    anecdotes={anecdotes}
+                    mostVotes={this.state.mostVotes}
+                    bestQuote={this.state.bestQuote} />
+            </div>
+        )
+    }
+}
+
+const BestQuote = (props) => {
+    if (props.mostVotes === 0) {
+        return (
+            <div><p>No votes given.</p></div>
+        )
+    } else {
+        return (
+            <div>
+                <p>Most popular quote with {props.mostVotes} {props.mostVotes === 1 ? "vote" : "votes"}:</p>
+                <p><em>"{props.anecdotes[props.bestQuote]}"</em></p>
             </div>
         )
     }
