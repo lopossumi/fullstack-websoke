@@ -1,5 +1,42 @@
 body {
-  margin: 0;
+  margin: 2em;
   padding: 0;
   font-family: sans-serif;
+}
+
+blockquote {
+  background: #f1f1f1;
+  border-left: 10px solid rgb(64, 104, 59);
+  margin: 1.5em 10px;
+  padding: 2em 10px;
+  font-size: large;
+  quotes: "\201C""\201D""\2018""\2019";
+  min-height:3em;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+.votes{
+  text-align: center;
+  font-size:250%;
+  margin-top:20px;
+}
+
+button {
+  border: none;
+  background: rgb(11, 114, 11);
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
