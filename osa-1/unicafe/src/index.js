@@ -29,6 +29,7 @@ const Statistics = (props) => {
     const keskiarvo = yhteensa === 0 ? 0 : ((counter.hyva - counter.huono)/yhteensa).toFixed(1)
     const positiivisia = yhteensa === 0 ? 0 : ((counter.hyva/yhteensa) * 100).toFixed(0)+" %"
 
+    if (yhteensa >0){
     return(
         <div id="statistiikka">
         <h2>Statistiikka</h2>
@@ -40,6 +41,7 @@ const Statistics = (props) => {
         <Statistic name = "Positiivisia" value = {positiivisia} />
         </div>
     )
+    } else return(<div><h2>Statistiikka</h2>Ei yhtään palautetta annettu.</div>)
 }
 
 const Statistic = (props) => {
