@@ -32,7 +32,7 @@ class App extends React.Component {
             const persons = this.state.persons.concat(personObject)
 
             this.setState({
-                persons: persons,
+                persons,
                 newName: '',
                 newNumber: ''
             })
@@ -53,46 +53,67 @@ class App extends React.Component {
 
     nimilista = () => this.state.persons
         .filter(item => item.name.toUpperCase().indexOf(this.state.myFilter.toUpperCase()) !== -1)
-        .map(item => <Person key={item.name} person={item} />)
+    //.map(item => <Person key={item.name} person={item} />)
 
     render() {
         return (
             <div>
                 <h1>Puhelinluettelo</h1>
+
                 Rajaa näytettäviä: <input value={this.state.myFilter} onChange={this.handleFilter} />
-                <form onSubmit={this.addPerson}>
-                    <div>
-                    <h2>Lisää uusi</h2>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>nimi:</td>
-                                    <td><input
-                                        value={this.state.newName}
-                                        onChange={this.handleNameChange} /></td>
-                                </tr>
-                                <tr>
-                                    <td>numero:</td>
-                                    <td><input
-                                        value={this.state.newNumber}
-                                        onChange={this.handleNumberChange} /></td>
-                                </tr>
-                            </tbody>
-                        </table>
 
-                    </div>
-                    <div>
-                        <button type="submit">lisää</button>
-                    </div>
-                </form>
-                <h2>Numerot</h2>
+                <AddNumber
+                    action={this.addPerson}
+                    nameValue={this.state.newName}
+                    nameHandler={this.handleNameChange}
+                    numberValue={this.state.newNumber}
+                    numberHandler={this.handleNumberChange} />
 
-                <table><tbody>
-                    {this.nimilista()}
-                </tbody></table>
+                <ShowNumbers persons={this.nimilista()} />
             </div>
         )
     }
+}
+
+const AddNumber = (props) => {
+    return (
+        <form onSubmit={props.action}>
+            <h2>Lisää uusi</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>nimi:</td>
+                        <td><input
+                            value={props.nameValue}
+                            onChange={props.nameHandler} /></td>
+                    </tr>
+                    <tr>
+                        <td>numero:</td>
+                        <td><input
+                            value={props.numberValue}
+                            onChange={props.numberHandler} /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="submit">lisää</button>
+        </form>
+    )
+}
+
+const ShowNumbers = (props) => {
+    const tableRows = props.persons.map(
+        item => <Person key={item.name} person={item} />
+    )
+
+    return (
+        <div>
+            <h2>Numerot</h2>
+            <table><tbody>
+                {tableRows}
+            </tbody>
+            </table>
+        </div>
+    )
 }
 
 const Person = (props) => <tr><td>{props.person.name}</td><td>{props.person.number}</td></tr>
