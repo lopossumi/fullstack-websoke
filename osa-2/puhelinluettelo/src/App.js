@@ -15,12 +15,12 @@ class App extends React.Component {
         console.log("constructor")
     }
 
-    componentWillMount(){
+    componentWillMount() {
         axios
-        .get('http://localhost:3001/persons')
-        .then(response => {
-            this.setState({persons: response.data})
-        })
+            .get('http://localhost:3001/persons')
+            .then(response => {
+                this.setState({ persons: response.data })
+            })
         console.log("willmount")
     }
 
@@ -37,13 +37,17 @@ class App extends React.Component {
                 name: this.state.newName,
                 number: this.state.newNumber
             }
-            const persons = this.state.persons.concat(personObject)
 
-            this.setState({
-                persons,
-                newName: '',
-                newNumber: ''
-            })
+            // Send the added number to the server and update view with response.
+            axios.post('http://localhost:3001/persons', personObject)
+                .then(response => {
+                    console.log(response)
+                    this.setState({
+                        persons: this.state.persons.concat(response.data),
+                        newName: '',
+                        newNumber: ''
+                    })
+                })
         }
     }
 
