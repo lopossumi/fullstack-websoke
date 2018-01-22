@@ -8,27 +8,28 @@ const Sisalto = (props) => {
     const osat = () => props.kurssi.osat.map(
         osa => <Osa key={osa.id} osa={osa.nimi} tehtavia={osa.tehtavia} />
     )
-        
+
     return (
         <div>{osat()}</div>
     )
 }
 
-/*
 const Yhteensa = (props) => {
-    const [osa1, osa2, osa3] = props.kurssi.osat
+    const summa = props.kurssi.osat
+        .map(osa => osa.tehtavia)
+        .reduce((a, b) => a + b)
 
     return (
-        <p>yhteensä {osa1.tehtavia + osa2.tehtavia + osa3.tehtavia} tehtävää</p>
+        <p>yhteensä {summa} tehtävää</p>
     )
 }
-*/
 
-const Kurssi = (props) =>{
+const Kurssi = (props) => {
     return (
         <div>
-            <Otsikko kurssi = {props.kurssi}/>
-            <Sisalto kurssi = {props.kurssi}/>
+            <Otsikko kurssi={props.kurssi} />
+            <Sisalto kurssi={props.kurssi} />
+            <Yhteensa kurssi={props.kurssi} />
         </div>
     )
 }
