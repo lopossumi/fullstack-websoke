@@ -5,13 +5,18 @@ class App extends React.Component {
         super(props)
         this.state = {
             persons: [
-                { name: 'Arto Hellas' }
+                { name: 'Arto Hellas', number: '040-123456' },
+                { name: 'Martti Tienari', number: '040-234567' },
+                { name: 'Arto Järvinen', number: '040-345678' },
+                { name: 'Lea Kutvonen', number: '040-456789' }
             ],
-            newName: ''
+            newName: '',
+            newNumber: '',
+            myFilter: ''
         }
     }
 
-    addName = (event) => {
+    addPerson = (event) => {
         event.preventDefault()
 
         //Check if name exists
@@ -21,36 +26,60 @@ class App extends React.Component {
         } else {
 
             const personObject = {
-                name: this.state.newName
+                name: this.state.newName,
+                number: this.state.newNumber
             }
             const persons = this.state.persons.concat(personObject)
 
             this.setState({
                 persons: persons,
-                newName: ''
+                newName: '',
+                newNumber: ''
             })
         }
     }
 
+    handleFilter = (event) => {
+        this.setState({ myFilter: event.target.value })
+    }
+
     handleNameChange = (event) => {
-        console.log(event.target.value)
         this.setState({ newName: event.target.value })
     }
 
-    nimilista = () => this.state.persons.map(
-        item => <Person key={item.name} person={item} />
-    )
+    handleNumberChange = (event) => {
+        this.setState({ newNumber: event.target.value })
+    }
+
+    nimilista = () => this.state.persons
+        .filter(item => item.name.toUpperCase().indexOf(this.state.myFilter.toUpperCase()) !== -1)
+        .map(item => <Person key={item.name} person={item} />)
 
     render() {
         return (
             <div>
-                <h2>Puhelinluettelo</h2>
-                <form onSubmit={this.addName}>
+                <h1>Puhelinluettelo</h1>
+                Rajaa näytettäviä: <input value={this.state.myFilter} onChange={this.handleFilter} />
+                <form onSubmit={this.addPerson}>
                     <div>
-                        nimi:
-                        <input
-                            value={this.state.newName}
-                            onChange={this.handleNameChange} />
+                    <h2>Lisää uusi</h2>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>nimi:</td>
+                                    <td><input
+                                        value={this.state.newName}
+                                        onChange={this.handleNameChange} /></td>
+                                </tr>
+                                <tr>
+                                    <td>numero:</td>
+                                    <td><input
+                                        value={this.state.newNumber}
+                                        onChange={this.handleNumberChange} /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                     </div>
                     <div>
                         <button type="submit">lisää</button>
@@ -58,14 +87,14 @@ class App extends React.Component {
                 </form>
                 <h2>Numerot</h2>
 
-                <ul>
+                <table><tbody>
                     {this.nimilista()}
-                </ul>
+                </tbody></table>
             </div>
         )
     }
 }
 
-const Person = (props) => <li>{props.person.name}</li>
+const Person = (props) => <tr><td>{props.person.name}</td><td>{props.person.number}</td></tr>
 
 export default App
