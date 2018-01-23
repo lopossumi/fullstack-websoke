@@ -10,7 +10,7 @@ class App extends React.Component {
             newName: '',
             newNumber: '',
             myFilter: '',
-            error:null
+            error: null
         }
     }
 
@@ -25,15 +25,18 @@ class App extends React.Component {
     addPerson = (event) => {
         event.preventDefault()
         const personName = this.state.newName
+        const personObject = {
+            name: personName,
+            number: this.state.newNumber
+        }
+
         //Check if name exists
         if (this.state.persons.some(item => item.name === personName)) {
+            console.log(`Name exists! Confirm replace number: ${personName}`)
             if (window.confirm(`${personName} on jo luettelossa. Korvataanko vanha numero uudella?`)) {
-                console.log("Name exists, replace")
-                
-                const personObject = {
-                    name: personName,
-                    number: this.state.newNumber
-                }
+
+                // Name exists: Replace number for old entry
+                console.log(`Confirmed. Replacing number for ${personName}...`)
                 const id = this.getPersonId(personName)
                 personService
                     .update(id, personObject)
@@ -46,32 +49,45 @@ class App extends React.Component {
                         console.log(`Number replaced for ${personName}`)
                         this.showMessage(`Puhelinnumero vaihdettu henkilölle ${personName}.`)
                     })
+                    .catch(error => {
+                        // Meanwhile, number has been deleted from server. Remove it locally first, then add new entry.
+                        console.log("Error: number not found on server. Removing local entry.")
+                        this.setState({
+                            persons: this.state.persons.filter(item => item.name !== personName)
+                        })
+                        this.addPersonObject(personObject)
+                    })
                 return
             } else {
-                console.log("Name exists, do not replace")
-                return
+                console.log("Canceled replace.")
+                this.showMessage("Numeron vaihto peruutettu.")
             }
         } else {
-            // Name does not exist, create new entry
-
-            const personObject = {
-                name: this.state.newName,
-                number: this.state.newNumber
-            }
-
-            // Send the added number to the server and update view with response.
-            personService
-                .create(personObject)
-                .then(person => {
-                    this.setState({
-                        persons: this.state.persons.concat(person),
-                        newName: '',
-                        newNumber: ''
-                    })
-                    console.log(`New entry: ${personName}`)
-                    this.showMessage(`${personName} lisätty luetteloon.`)
-                })
+            // Entry does not exist: create new entry.
+            this.addPersonObject(personObject)
         }
+    }
+
+    addPersonObject = (personObject) => {
+        personService
+        .create(personObject)
+        .then(person => {
+            this.setState({
+                persons: this.state.persons.concat(person),
+                newName: '',
+                newNumber: ''
+            })
+            console.log(`New entry: ${personObject.name}`)
+            this.showMessage(`${personObject.name} lisätty luetteloon.`)
+        })
+    }
+    
+    getPersonName = (id) => {
+        return this.state.persons.find(item => item.id === id).name
+    }
+
+    getPersonId = (name) => {
+        return this.state.persons.find(item => item.name === name).id
     }
 
     handleFilter = (event) => {
@@ -86,27 +102,20 @@ class App extends React.Component {
         this.setState({ newNumber: event.target.value })
     }
 
-    getPersonName = (id) => {
-        return this.state.persons.find(item => item.id === id).name
-    }
-
-    getPersonId = (name) => {
-        return this.state.persons.find(item => item.name === name).id
-    }
-
-    handleRemove = (event) => {
+    removePerson = (event) => {
         const id = parseInt(event.target.value, 10)
         const personName = this.getPersonName(id)
 
         console.log(`Confirm remove id ${id}: ${personName}`)
         if (window.confirm(`Poistetaanko ${personName} luettelosta?`)) {
-            // request remove from server
+            console.log("Confirmed. Removing...")
+            // Request remove from server
             personService
                 .remove(event.target.value)
                 .then(response => {
                     console.log("Remove status:" + response.statusText)
                     if (response.status === 200) {
-                        //remove from view
+                        // Remove from view
                         this.setState({
                             persons: this.state.persons.filter(item => item.id !== id)
                         })
@@ -125,11 +134,11 @@ class App extends React.Component {
             error: text
         })
         setTimeout(() => {
-            this.setState({error:null})
-        },2000)
+            this.setState({ error: null })
+        }, 3000)
     }
 
-    nimilista = () => this.state.persons
+    filteredList = () => this.state.persons
         .filter(item => item.name.toUpperCase().indexOf(this.state.myFilter.toUpperCase()) !== -1)
     //.map(item => <Person key={item.name} person={item} />)
 
@@ -137,7 +146,7 @@ class App extends React.Component {
         return (
             <div>
                 <h1>Puhelinluettelo</h1>
-                <Notification message={this.state.error}/>
+                <Notification message={this.state.error} />
 
                 Rajaa näytettäviä: <input value={this.state.myFilter} onChange={this.handleFilter} />
 
@@ -149,8 +158,8 @@ class App extends React.Component {
                     numberHandler={this.handleNumberChange} />
 
                 <ShowNumbers
-                    persons={this.nimilista()}
-                    removeHandler={this.handleRemove} />
+                    persons={this.filteredList()}
+                    removeHandler={this.removePerson} />
             </div>
         )
     }
@@ -179,7 +188,7 @@ const AddNumber = (props) => {
                     </tr>
                 </tbody>
             </table>
-            
+
         </form>
     )
 }
