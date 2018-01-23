@@ -1,6 +1,6 @@
 # Puhelinluettelo
 
-Puhelinluettelon front end -logiikka.
+Puhelinluettelon front end -logiikka ja backendin simulointia json serverillä.
 
 ![Kuvakaappaus Puhelinluettelosta](images/screenshot.png)
 
