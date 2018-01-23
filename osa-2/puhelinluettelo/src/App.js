@@ -26,10 +26,31 @@ class App extends React.Component {
         event.preventDefault()
 
         //Check if name exists
-        if (this.state.persons.map(item => item.name).indexOf(this.state.newName) >= 0) {
-            this.setState({ newName: '' })
-            alert("Nimi on jo luettelossa!")
+        if (this.state.persons.some(item => item.name === this.state.newName)) {
+            if (window.confirm(`${this.state.newName} on jo luettelossa. Korvataanko vanha numero uudella?`)) {
+                console.log("Name exists, replace")
+                
+                const personObject = {
+                    name: this.state.newName,
+                    number: this.state.newNumber
+                }
+                const id = this.getPersonId(this.state.newName)
+                personService
+                    .update(id, personObject)
+                    .then(response => {
+                        this.setState({
+                            persons: this.state.persons.map(item => item.id !== id ? item : personObject),
+                            newName: '',
+                            newNumber: ''
+                        })
+                    })
+                return
+            } else {
+                console.log("Name exists, do not replace")
+                return
+            }
         } else {
+            // Name does not exist, create new entry
 
             const personObject = {
                 name: this.state.newName,
@@ -62,13 +83,17 @@ class App extends React.Component {
     }
 
     getPersonName = (id) => {
-        return this.state.persons.filter(item => item.id === id)[0].name
+        return this.state.persons.find(item => item.id === id).name
+    }
+
+    getPersonId = (name) => {
+        return this.state.persons.find(item => item.name === name).id
     }
 
     handleRemove = (event) => {
         const id = parseInt(event.target.value, 10)
         const personName = this.getPersonName(id)
-        
+
         console.log(`Confirm remove id ${id}: ${personName}`)
         if (window.confirm(`Poistetaanko ${personName} luettelosta?`)) {
             // request remove from server
@@ -83,7 +108,7 @@ class App extends React.Component {
                         })
                     }
                 })
-        }else{
+        } else {
             console.log("Canceled.")
         }
     }
