@@ -1,11 +1,6 @@
 {
   "persons": [
     {
-      "name": "Bentti Bee",
-      "number": "",
-      "id": 2
-    },
-    {
       "name": "Centti Cee",
       "number": "0981111",
       "id": 3
@@ -14,6 +9,11 @@
       "name": "Antti Aa",
       "number": "09812333",
       "id": 4
+    },
+    {
+      "name": "Denttei Dee",
+      "number": "09812312",
+      "id": 5
     }
   ]
 }

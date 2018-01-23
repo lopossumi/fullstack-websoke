@@ -1,16 +1,16 @@
 import React from 'react';
 import personService from './services/persons'
-//import axios from 'axios'
+import Notification from './components/Notification'
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            persons: [
-            ],
+            persons: [],
             newName: '',
             newNumber: '',
-            myFilter: ''
+            myFilter: '',
+            error:null
         }
     }
 
@@ -24,17 +24,17 @@ class App extends React.Component {
 
     addPerson = (event) => {
         event.preventDefault()
-
+        const personName = this.state.newName
         //Check if name exists
-        if (this.state.persons.some(item => item.name === this.state.newName)) {
-            if (window.confirm(`${this.state.newName} on jo luettelossa. Korvataanko vanha numero uudella?`)) {
+        if (this.state.persons.some(item => item.name === personName)) {
+            if (window.confirm(`${personName} on jo luettelossa. Korvataanko vanha numero uudella?`)) {
                 console.log("Name exists, replace")
                 
                 const personObject = {
-                    name: this.state.newName,
+                    name: personName,
                     number: this.state.newNumber
                 }
-                const id = this.getPersonId(this.state.newName)
+                const id = this.getPersonId(personName)
                 personService
                     .update(id, personObject)
                     .then(response => {
@@ -43,6 +43,8 @@ class App extends React.Component {
                             newName: '',
                             newNumber: ''
                         })
+                        console.log(`Number replaced for ${personName}`)
+                        this.showMessage(`Puhelinnumero vaihdettu henkilölle ${personName}.`)
                     })
                 return
             } else {
@@ -66,6 +68,8 @@ class App extends React.Component {
                         newName: '',
                         newNumber: ''
                     })
+                    console.log(`New entry: ${personName}`)
+                    this.showMessage(`${personName} lisätty luetteloon.`)
                 })
         }
     }
@@ -106,11 +110,23 @@ class App extends React.Component {
                         this.setState({
                             persons: this.state.persons.filter(item => item.id !== id)
                         })
+                        console.log(`Removed: ${personName}`)
+                        this.showMessage(`${personName} poistettu luettelosta.`)
                     }
                 })
         } else {
-            console.log("Canceled.")
+            console.log("Canceled remove.")
+            this.showMessage("Numeron poisto peruutettu.")
         }
+    }
+
+    showMessage = (text) => {
+        this.setState({
+            error: text
+        })
+        setTimeout(() => {
+            this.setState({error:null})
+        },2000)
     }
 
     nimilista = () => this.state.persons
@@ -121,6 +137,7 @@ class App extends React.Component {
         return (
             <div>
                 <h1>Puhelinluettelo</h1>
+                <Notification message={this.state.error}/>
 
                 Rajaa näytettäviä: <input value={this.state.myFilter} onChange={this.handleFilter} />
 
@@ -157,9 +174,12 @@ const AddNumber = (props) => {
                             value={props.numberValue}
                             onChange={props.numberHandler} /></td>
                     </tr>
+                    <tr>
+                        <td><button type="submit">lisää</button></td>
+                    </tr>
                 </tbody>
             </table>
-            <button type="submit">lisää</button>
+            
         </form>
     )
 }
