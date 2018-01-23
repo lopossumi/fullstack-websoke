@@ -1,6 +1,9 @@
 import React from 'react';
 import personService from './services/persons'
+
 import Notification from './components/Notification'
+import AddNumber from './components/AddNumber'
+import ShowNumbers from './components/ShowNumbers'
 
 class App extends React.Component {
     constructor(props) {
@@ -146,7 +149,8 @@ class App extends React.Component {
         return (
             <div>
                 <h1>Puhelinluettelo</h1>
-                <Notification message={this.state.error} />
+                <Notification
+                    message={this.state.error} />
 
                 Rajaa näytettäviä: <input value={this.state.myFilter} onChange={this.handleFilter} />
 
@@ -164,56 +168,5 @@ class App extends React.Component {
         )
     }
 }
-
-const AddNumber = (props) => {
-    return (
-        <form onSubmit={props.action}>
-            <h2>Lisää uusi</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>nimi:</td>
-                        <td><input
-                            value={props.nameValue}
-                            onChange={props.nameHandler} /></td>
-                    </tr>
-                    <tr>
-                        <td>numero:</td>
-                        <td><input
-                            value={props.numberValue}
-                            onChange={props.numberHandler} /></td>
-                    </tr>
-                    <tr>
-                        <td><button type="submit">lisää</button></td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </form>
-    )
-}
-
-const ShowNumbers = (props) => {
-    const tableRows = props.persons.map(
-        item => <Person key={item.name} person={item} removeAction={props.removeHandler} />
-    )
-
-    return (
-        <div>
-            <h2>Numerot</h2>
-            <table><tbody>
-                {tableRows}
-            </tbody>
-            </table>
-        </div>
-    )
-}
-
-const Person = (props) =>
-    <tr>
-        <td>{props.person.name}</td>
-        <td>{props.person.number}</td>
-        <td><button value={props.person.id} onClick={props.removeAction}>poista</button></td>
-    </tr>
 
 export default App
