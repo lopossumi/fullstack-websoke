@@ -48,6 +48,7 @@ class App extends React.Component {
                 })
         }
     }
+
     handleFilter = (event) => {
         this.setState({ myFilter: event.target.value })
     }
@@ -58,6 +59,33 @@ class App extends React.Component {
 
     handleNumberChange = (event) => {
         this.setState({ newNumber: event.target.value })
+    }
+
+    getPersonName = (id) => {
+        return this.state.persons.filter(item => item.id === id)[0].name
+    }
+
+    handleRemove = (event) => {
+        const id = parseInt(event.target.value, 10)
+        const personName = this.getPersonName(id)
+        
+        console.log(`Confirm remove id ${id}: ${personName}`)
+        if (window.confirm(`Poistetaanko ${personName} luettelosta?`)) {
+            // request remove from server
+            personService
+                .remove(event.target.value)
+                .then(response => {
+                    console.log("Remove status:" + response.statusText)
+                    if (response.status === 200) {
+                        //remove from view
+                        this.setState({
+                            persons: this.state.persons.filter(item => item.id !== id)
+                        })
+                    }
+                })
+        }else{
+            console.log("Canceled.")
+        }
     }
 
     nimilista = () => this.state.persons
@@ -78,7 +106,9 @@ class App extends React.Component {
                     numberValue={this.state.newNumber}
                     numberHandler={this.handleNumberChange} />
 
-                <ShowNumbers persons={this.nimilista()} />
+                <ShowNumbers
+                    persons={this.nimilista()}
+                    removeHandler={this.handleRemove} />
             </div>
         )
     }
@@ -111,7 +141,7 @@ const AddNumber = (props) => {
 
 const ShowNumbers = (props) => {
     const tableRows = props.persons.map(
-        item => <Person key={item.name} person={item} />
+        item => <Person key={item.name} person={item} removeAction={props.removeHandler} />
     )
 
     return (
@@ -125,6 +155,11 @@ const ShowNumbers = (props) => {
     )
 }
 
-const Person = (props) => <tr><td>{props.person.name}</td><td>{props.person.number}</td></tr>
+const Person = (props) =>
+    <tr>
+        <td>{props.person.name}</td>
+        <td>{props.person.number}</td>
+        <td><button value={props.person.id} onClick={props.removeAction}>poista</button></td>
+    </tr>
 
 export default App

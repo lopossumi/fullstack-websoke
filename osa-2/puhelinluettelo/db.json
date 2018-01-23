@@ -1,44 +1,19 @@
 {
   "persons": [
     {
-      "name": "Arto Hellas",
-      "number": "040-123456",
+      "name": "Antti Aa",
+      "number": "091823098",
       "id": 1
     },
     {
-      "name": "Martti Tienari",
-      "number": "040-123456",
+      "name": "Bentti Bee",
+      "number": "0198203981",
       "id": 2
     },
     {
-      "name": "Arto Järvinen",
-      "number": "040-123456",
+      "name": "Centti Cee",
+      "number": "+901923544",
       "id": 3
-    },
-    {
-      "name": "Lea Kutvonen",
-      "number": "040-123456",
-      "id": 4
-    },
-    {
-      "name": "Pekka Puupaa",
-      "number": "040-2048267",
-      "id": 5
-    },
-    {
-      "name": "Veikko Venäläinen",
-      "number": "040-3232323",
-      "id": 6
-    },
-    {
-      "name": "Seppo Suomalainen",
-      "number": "09-1823123",
-      "id": 7
-    },
-    {
-      "name": "Ami Viiksi",
-      "number": "09-2331823",
-      "id": 8
     }
   ]
 }
