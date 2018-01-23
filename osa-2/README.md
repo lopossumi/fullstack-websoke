@@ -31,5 +31,7 @@ Tehty 19/19 @ 23.1.2018.
 
 ## Datan hakeminen palvelimelta (countries)
 
+| Tehtävänumero | Kuvaus | Commit |
+|-------- |--------|--------|
 | Tehtävä 12* | maiden tiedot | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/1ce6541edcaeacb18bdebdfda5d8719f2574835a) |
 | Tehtävä 13* | maiden tiedot klikkaamalla | [Linkki commitiin](https://github.com/lopossumi/fullstack-websoke/commit/460738464478006ef8db68c0540c524f42e799fd) |
