@@ -19,6 +19,26 @@
       "name": "Lea Kutvonen",
       "number": "040-123456",
       "id": 4
+    },
+    {
+      "name": "Pekka Puupaa",
+      "number": "040-2048267",
+      "id": 5
+    },
+    {
+      "name": "Veikko Venäläinen",
+      "number": "040-3232323",
+      "id": 6
+    },
+    {
+      "name": "Seppo Suomalainen",
+      "number": "09-1823123",
+      "id": 7
+    },
+    {
+      "name": "Ami Viiksi",
+      "number": "09-2331823",
+      "id": 8
     }
   ]
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-
-import axios from 'axios'
+import personService from './services/persons'
+//import axios from 'axios'
 
 class App extends React.Component {
     constructor(props) {
@@ -12,16 +12,14 @@ class App extends React.Component {
             newNumber: '',
             myFilter: ''
         }
-        console.log("constructor")
     }
 
     componentWillMount() {
-        axios
-            .get('http://localhost:3001/persons')
-            .then(response => {
-                this.setState({ persons: response.data })
+        personService
+            .getAll()
+            .then(persons => {
+                this.setState({ persons })
             })
-        console.log("willmount")
     }
 
     addPerson = (event) => {
@@ -39,18 +37,17 @@ class App extends React.Component {
             }
 
             // Send the added number to the server and update view with response.
-            axios.post('http://localhost:3001/persons', personObject)
-                .then(response => {
-                    console.log(response)
+            personService
+                .create(personObject)
+                .then(person => {
                     this.setState({
-                        persons: this.state.persons.concat(response.data),
+                        persons: this.state.persons.concat(person),
                         newName: '',
                         newNumber: ''
                     })
                 })
         }
     }
-
     handleFilter = (event) => {
         this.setState({ myFilter: event.target.value })
     }
