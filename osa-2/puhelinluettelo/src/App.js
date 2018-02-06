@@ -110,7 +110,7 @@ class App extends React.Component {
     }
 
     removePerson = (event) => {
-        const id = parseInt(event.target.value, 10)
+        const id = event.target.value
         const personName = this.getPersonName(id)
 
         console.log(`Confirm remove id ${id}: ${personName}`)
