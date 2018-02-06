@@ -6,6 +6,8 @@ Repositorio sisältää vastauksia kevään 2018 kurssille [Fullstack-websovellu
 
 - [Osa 0: Sekvenssikaavioita (perinteinen ja SPA)](https://github.com/lopossumi/fullstack-websoke/tree/master/osa-0)
 - [Osa 1: Reactin alkeita](https://github.com/lopossumi/fullstack-websoke/tree/master/osa-1)
+- [Osa 2: Kokoelmat, lomakkeet ja palvelinkommunikaatio](https://github.com/lopossumi/fullstack-websoke/tree/master/osa-2)
+
 
 ## Linkit
 

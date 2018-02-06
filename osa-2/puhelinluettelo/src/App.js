@@ -83,6 +83,10 @@ class App extends React.Component {
             console.log(`New entry: ${personObject.name}`)
             this.showMessage(`${personObject.name} lisätty luetteloon.`)
         })
+        .catch(error => {
+            console.log("Failed to create entry.")
+            this.showMessage(`Henkilön lisääminen luetteloon ei onnistunut. Tarkista syöte.`)
+        })
     }
     
     getPersonName = (id) => {
@@ -117,7 +121,7 @@ class App extends React.Component {
                 .remove(event.target.value)
                 .then(response => {
                     console.log("Remove status:" + response.statusText)
-                    if (response.status === 200) {
+                    if (response.status === 204) {
                         // Remove from view
                         this.setState({
                             persons: this.state.persons.filter(item => item.id !== id)
